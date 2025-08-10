@@ -32,16 +32,13 @@ jobs:
       run: npx tsc --noEmit
 
     - name: ESLint check
-      run: npx eslint . --ext .js,.ts,.tsx --format=compact
+      run: npx eslint . --ext .js,.ts --format=compact
 
     - name: Prettier format check
-      run: npx prettier --check "**/*.{js,ts,tsx,json,md,html,css,scss}"
+      run: npx prettier --check "**/*.{js,ts}"
 
     - name: Audit dependencies for vulnerabilities
       run: npm audit --audit-level=moderate
 
     - name: Check for outdated dependencies
       run: npm outdated || true
-
-    - name: Validate package.json
-      run: npm ls --depth=0

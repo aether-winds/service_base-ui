@@ -32,23 +32,28 @@
     "hbs": "^4.2.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.33.0",
     "@types/chai": "^5.2.2",
     "@types/express": "^5.0.3",
     "@types/hbs": "^4.0.4",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.5.4",
+    "@types/node": "^24.2.1",
     "@types/sinon": "^17.0.4",
     "@typescript-eslint/eslint-plugin": "^8.5.0",
     "@typescript-eslint/parser": "^8.5.0",
     "chai": "5.2.1",
-    "eslint": "^9.10.0",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint": "^9.33.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-formatter-compact": "^8.40.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^16.3.0",
     "mocha": "11.7.1",
     "nodemon": "3.1.10",
     "prettier": "^3.3.3",
     "sinon": "21.0.0",
-    "tsx": "4.20.0",
-    "typescript": "5.9.2"
+    "tsx": "^4.20.3",
+    "typescript": "5.9.2",
+    "typescript-eslint": "^8.39.0"
   }
 }
