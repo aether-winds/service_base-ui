@@ -13,19 +13,19 @@ jobs:
 
     steps:
     - name: Run Typescript Check
-      uses: ./.github/actions/type-check.yml
+      uses: ./.github/workflows/jobs/type-check.yml
 
     - name: Run ESLint Check
-      uses: ./.github/actions/lint.yml
+      uses: ./.github/workflows/jobs/lint.yml
 
     - name: Run Unit Tests
-      uses: ./.github/actions/tests.yml
+      uses: ./.github/workflows/jobs/tests.yml
 
     - name: Run Format Check
-      uses: ./.github/actions/format.yml
+      uses: ./.github/workflows/jobs/format.yml
 
     - name: Run Audit Check
-      uses: ./.github/actions/audit.yml
+      uses: ./.github/workflows/jobs/audit.yml
 
     - name: Run Outdated Check
-      uses: ./.github/actions/outdated.yml
+      uses: ./.github/workflows/jobs/outdated.yml
