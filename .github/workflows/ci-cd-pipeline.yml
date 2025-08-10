@@ -21,13 +21,22 @@ jobs:
         node-version: ${{ vars.DEFAULT_NODE_VERSION }}
         cache: 'npm'
     - name: Create Release Tag
-      run: npm run version
+      run: npm version patch
 
   build:
     name: Build
     needs: tag
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ vars.DEFAULT_NODE_VERSION }}
+        cache: 'npm'
+    - name: Install Dependencies
+      run: npm ci
     - name: Build Application
       run: npm run build
     - name: Upload Build Artifacts
