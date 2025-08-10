@@ -1,0 +1,104 @@
+name: Check Code Quality
+
+on:
+  push:
+    branches: [ '**' ]
+  pull_request:
+    branches: [ 'master' ]
+
+jobs:
+  build-check:
+    name: Compile Check
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ vars.DEFAULT_NODE_VERSION }}
+        cache: 'npm'
+    - name: Install Dependencies
+      run: npm ci
+    - name: Build Check
+      run: npm run build:check
+
+  lint-check:
+    name: Lint Check
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ vars.DEFAULT_NODE_VERSION }}
+        cache: 'npm'
+    - name: Install Dependencies
+      run: npm ci
+    - name: Lint Check
+      run: npm run lint
+
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ vars.DEFAULT_NODE_VERSION }}
+        cache: 'npm'
+    - name: Install Dependencies
+      run: npm ci
+    - name: Run Tests
+      run: npm run test
+
+  format-check:
+    name: Format Check
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ vars.DEFAULT_NODE_VERSION }}
+        cache: 'npm'
+    - name: Install Dependencies
+      run: npm ci
+    - name: Format Check
+      run: npm run format:check
+
+  audit-check:
+    name: Audit Check
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ vars.DEFAULT_NODE_VERSION }}
+        cache: 'npm'
+    - name: Install Dependencies
+      run: npm ci
+    - name: Audit Check
+      run: npm audit --audit-level=moderate
+
+  outdated-check:
+    name: Outdated Check
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ vars.DEFAULT_NODE_VERSION }}
+        cache: 'npm'
+    - name: Install Dependencies
+      run: npm ci
+    - name: Outdated Check
+      run: npm outdated || true
