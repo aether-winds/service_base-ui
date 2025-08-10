@@ -5,10 +5,12 @@ on:
 
 jobs:
   audit:
-    uses: ./.github/actions/setup.yml
     runs-on: ubuntu-latest
 
     steps:
+    - name: Setup
+      uses: ./.github/actions/setup.yml
+
     - name: Run npm audit
       needs: setup
       run: npm audit
