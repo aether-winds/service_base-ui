@@ -1,6 +1,6 @@
 {
   "name": "@aether-winds/service-base-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -24,7 +24,12 @@
     "type": "git",
     "url": "git+https://github.com/aether-winds/service_base-ui.git"
   },
-  "keywords": ["express", "typescript", "api", "service"],
+  "keywords": [
+    "express",
+    "typescript",
+    "api",
+    "service"
+  ],
   "author": "Patrick Ortiz <pogithub@gmail.com>",
   "license": "MIT",
   "bugs": {
