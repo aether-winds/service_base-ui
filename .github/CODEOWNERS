@@ -1,0 +1,13 @@
+# Global code ownership
+# This file defines who owns what in the repository
+# Learn more: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owner for everything in the repo
+* @aether-winds
+
+# Specific ownership for critical files
+/.github/ @aether-winds
+/package.json @aether-winds
+/tsconfig.json @aether-winds
+/.eslintrc.json @aether-winds
+/.prettierrc.json @aether-winds
