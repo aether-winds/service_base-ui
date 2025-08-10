@@ -7,8 +7,8 @@ jobs:
   test:
     uses: ./.github/actions/setup.yml
     runs-on: ubuntu-latest
-    needs: setup
 
     steps:
     - name: Run Unit Tests
+      needs: setup
       run: npm run test

@@ -6,9 +6,9 @@ on:
 job:
   build:
     uses: ./.github/actions/setup.yml
-    needs: setup
     runs-on: ubuntu-latest
 
     steps:
     - name: Build Application
+      needs: setup
       run: npm run build

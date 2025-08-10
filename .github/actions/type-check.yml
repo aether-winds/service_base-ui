@@ -6,9 +6,9 @@ on:
 jobs:
   type-check:
     uses: ./.github/actions/setup.yml
-    needs: setup
     runs-on: ubuntu-latest
 
     steps:
     - name: Run TypeScript Build Check
+      needs: setup
       run: npm run build:check

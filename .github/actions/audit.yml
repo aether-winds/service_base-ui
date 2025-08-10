@@ -6,9 +6,9 @@ on:
 jobs:
   audit:
     uses: ./.github/actions/setup.yml
-    needs: setup
     runs-on: ubuntu-latest
 
     steps:
     - name: Run npm audit
+      needs: setup
       run: npm audit

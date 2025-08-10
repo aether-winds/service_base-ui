@@ -6,9 +6,9 @@ on:
 jobs:
   format:
     uses: ./.github/actions/setup.yml
-    needs: setup
     runs-on: ubuntu-latest
 
     steps:
     - name: Run Prettier
+      needs: setup
       run: npm run format

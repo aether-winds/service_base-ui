@@ -6,9 +6,9 @@ on:
 jobs:
   outdated:
     uses: ./.github/actions/setup.yml
-    needs: setup
     runs-on: ubuntu-latest
 
     steps:
     - name: Check for Outdated Dependencies
+      needs: setup
       run: npm outdated || true

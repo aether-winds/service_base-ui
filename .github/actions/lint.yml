@@ -6,9 +6,9 @@ on:
 jobs:
   lint:
     uses: ./.github/actions/setup.yml
-    needs: setup
     runs-on: ubuntu-latest
 
     steps:
     - name: Run ESLint
+      needs: setup
       run: npm run lint
