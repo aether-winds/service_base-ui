@@ -29,16 +29,16 @@ jobs:
       run: npm ci
 
     - name: TypeScript compilation check
-      run: npx tsc --noEmit
+      run: npm run type-check
 
     - name: ESLint check
-      run: npx eslint . --ext .js,.ts --format=compact
+      run: npm run lint
 
     - name: Prettier format check
-      run: npx prettier --check "**/*.{js,ts}"
+      run: npm run format:check
 
     - name: Audit dependencies for vulnerabilities
-      run: npm audit --audit-level=moderate
+      run: npm audit -- --audit-level=moderate
 
     - name: Check for outdated dependencies
       run: npm outdated || true
