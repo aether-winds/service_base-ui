@@ -7,25 +7,58 @@ on:
     branches: [ 'master' ]
 
 jobs:
-  code-quality:
-    name: Code Quality Checks
+  setup:
+    name: Setup Environment
     runs-on: ubuntu-latest
-
     steps:
-    - name: Run Typescript Check
-      uses: ./.github/workflows/jobs/type-check.yml
+    - name: Checkout Code
+      uses: actions/checkout@v4
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ vars.DEFAULT_NODE_VERSION }}
+        cache: 'npm'
+    - name: Install Deps
+      run: npm ci
 
-    - name: Run ESLint Check
-      uses: ./.github/workflows/jobs/lint.yml
+  build-check:
+    name: Compile Check
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+    - run: npm run build:check
 
-    - name: Run Unit Tests
-      uses: ./.github/workflows/jobs/tests.yml
+  lint-check:
+    name: Lint Check
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+    - run: npm run lint
 
-    - name: Run Format Check
-      uses: ./.github/workflows/jobs/format.yml
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+    - run: npm run test
 
-    - name: Run Audit Check
-      uses: ./.github/workflows/jobs/audit.yml
+  format-check:
+    name: Format Check
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+    - run: npm run format:check
 
-    - name: Run Outdated Check
-      uses: ./.github/workflows/jobs/outdated.yml
+  audit-check:
+    name: Audit Check
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+    - run: npm run audit -- --audit-level=moderate
+
+  outdated-check:
+    name: Outdated Check
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+    - run: npm outdated

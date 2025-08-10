@@ -1,19 +1,17 @@
 {
   "name": "@aether-winds/service-base-ui",
   "version": "0.0.1",
-  "description": "Service Base UI - Express TypeScript Application",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist/**/*",
-    "README.md",
     "LICENSE"
   ],
   "scripts": {
     "build": "tsc",
     "build:check": "tsc --noEmit",
     "dev": "nodemon --exec tsx src/index.ts",
-    "format": "prettier --write \"**/*.{js,ts,json,html,css}\"",
+    "format": "prettier --write \"**/*.{js,ts}\"",
     "format:check": "prettier --check \"**/*.{js,ts}\"",
     "lint": "eslint . --ext .js,.ts --format=compact",
     "prepublishOnly": "npm run build",
@@ -27,12 +25,13 @@
     "url": "git+https://github.com/aether-winds/service_base-ui.git"
   },
   "keywords": ["express", "typescript", "api", "service"],
-  "author": "aether-winds",
-  "license": "ISC",
+  "author": "Patrick Ortiz <pogithub@gmail.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/aether-winds/service_base-ui/issues"
   },
   "homepage": "https://github.com/aether-winds/service_base-ui#readme",
+  "description": "",
   "dependencies": {
     "express": "5.1.0",
     "hbs": "4.2.0"
