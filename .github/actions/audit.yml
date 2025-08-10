@@ -1,0 +1,14 @@
+name: Audit Check
+
+on:
+  workflow_call:
+
+jobs:
+  audit:
+    uses: ./.github/actions/setup.yml
+    needs: setup
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Run npm audit
+      run: npm audit

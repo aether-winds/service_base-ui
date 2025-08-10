@@ -1,0 +1,14 @@
+name: Build Application
+
+on:
+  workflow_call:
+
+job:
+  build:
+    uses: ./.github/actions/setup.yml
+    needs: setup
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Build Application
+      run: npm run build

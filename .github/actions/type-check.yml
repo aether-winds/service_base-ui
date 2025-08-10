@@ -1,0 +1,14 @@
+name: Typescript Compilation Check
+
+on:
+  workflow_call:
+
+jobs:
+  type-check:
+    uses: ./.github/actions/setup.yml
+    needs: setup
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Run TypeScript Build Check
+      run: npm run build:check

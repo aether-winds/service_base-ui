@@ -1,0 +1,31 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [ '**' ]
+  pull_request:
+    branches: [ 'master' ]
+
+jobs:
+  code-quality:
+    name: Code Quality Checks
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Run Typescript Check
+      uses: ./.github/actions/type-check.yml
+
+    - name: Run ESLint Check
+      uses: ./.github/actions/lint.yml
+
+    - name: Run Unit Tests
+      uses: ./.github/actions/tests.yml
+
+    - name: Run Format Check
+      uses: ./.github/actions/format.yml
+
+    - name: Run Audit Check
+      uses: ./.github/actions/audit.yml
+
+    - name: Run Outdated Check
+      uses: ./.github/actions/outdated.yml

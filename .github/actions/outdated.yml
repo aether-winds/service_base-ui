@@ -1,0 +1,14 @@
+name: Check for outdated dependencies
+
+on:
+  workflow_call:
+
+jobs:
+  outdated:
+    uses: ./.github/actions/setup.yml
+    needs: setup
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check for Outdated Dependencies
+      run: npm outdated || true

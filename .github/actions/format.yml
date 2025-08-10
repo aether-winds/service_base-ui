@@ -1,0 +1,14 @@
+name: Format Check
+
+on:
+  workflow_call:
+
+jobs:
+  format:
+    uses: ./.github/actions/setup.yml
+    needs: setup
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Run Prettier
+      run: npm run format
