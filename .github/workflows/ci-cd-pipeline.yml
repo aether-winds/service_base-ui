@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: Merge to Master Pipeline
 
 on:
   workflow_run:
@@ -9,23 +9,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  tag:
-    name: Tag Release
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ vars.DEFAULT_NODE_VERSION }}
-        cache: 'npm'
-    - name: Create Release Tag
-      run: npm version patch
-
   build:
     name: Build
-    needs: tag
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Code
@@ -35,7 +20,7 @@ jobs:
       with:
         node-version: ${{ vars.DEFAULT_NODE_VERSION }}
         cache: 'npm'
-    - name: Install Dependencies
+    - name: Install Deps
       run: npm ci
     - name: Build Application
       run: npm run build
