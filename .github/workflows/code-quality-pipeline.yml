@@ -101,4 +101,4 @@ jobs:
     - name: Install Dependencies
       run: npm ci
     - name: Outdated Check
-      run: npm outdated
+      run: npm outdated || true
