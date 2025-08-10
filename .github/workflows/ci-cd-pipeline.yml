@@ -2,7 +2,7 @@ name: Merge to Master Pipeline
 
 on:
   workflow_run:
-    workflows: ["Code Quality"]
+    workflows: ["Check Code Quality"]
     types:
       - completed
     branches: [master]
