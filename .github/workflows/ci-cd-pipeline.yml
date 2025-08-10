@@ -9,8 +9,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup:
-    name: Setup Environment
+  tag:
+    name: Tag Release
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Code
@@ -20,30 +20,16 @@ jobs:
       with:
         node-version: ${{ vars.DEFAULT_NODE_VERSION }}
         cache: 'npm'
-    - name: Install Deps
-      run: npm ci
-
-  tag:
-    name: Tag Release
-    needs: setup
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Create Release Tag
-        run: |
-          npm version patch
-          git tag -a $(npm pkg get version | tr -d \") -m "Release version $(npm pkg get version | tr -d \")"
-          git push origin $(npm pkg get version | tr -d \")
+    - name: Create Release Tag
+      run: npm run version
 
   build:
     name: Build
-    needs: [setup, tag]
+    needs: tag
     runs-on: ubuntu-latest
-
     steps:
     - name: Build Application
       run: npm run build
-
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v4
       with:
